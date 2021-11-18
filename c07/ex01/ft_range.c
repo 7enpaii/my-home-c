@@ -19,10 +19,11 @@ int	*ft_range(int min, int max)
 
 	if (min >= max)
 		return (NULL);
-	digit_tab = malloc(sizeof(*digit_tab) * max - 1);
+	digit_tab = malloc(sizeof(*digit_tab) * (max - min));
+	if (!digit_tab)
+		return (NULL);
 	i = 0;
 	while (min < max)
 		digit_tab[i++] = min++;
-	free(digit_tab);
 	return (digit_tab);
 }

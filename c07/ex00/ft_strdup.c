@@ -18,23 +18,24 @@ int	ft_strlen(char *str)
 	int	cnt;
 
 	cnt = 0;
-	while (str[cnt++])
-		;
+	while (str[cnt++]);
 	return (cnt);
 }
 
 char	*ft_strdup(char *str)
 {
-	char	*copy_str;
+	char	*dest;
 	int		strlen;
 	int		i;
 
 	strlen = ft_strlen(str) + 1;
-	copy_str = malloc(sizeof(*copy_str) * strlen);
+	dest = malloc(sizeof(*dest) * strlen);
 	i = 0;
+	if (!dest)
+		return (NULL);
 	while (*str)
-		copy_str[i++] = *str++;
-	copy_str[i] = '\0';
-	free(copy_str);
-	return (copy_str);
+		dest[i++] = *str++;
+	dest[i] = '\0';
+	free(dest);
+	return (dest);
 }
