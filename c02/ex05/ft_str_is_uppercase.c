@@ -1,34 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_params.c                                  :+:      :+:    :+:   */
+/*   ft_str_is_uppercase.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aazdoev <aazdoev@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aazdoev <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/18 11:40:52 by aazdoev           #+#    #+#             */
-/*   Updated: 2021/11/18 11:41:33 by aazdoev          ###   ########.fr       */
+/*   Created: 2021/11/16 11:35:30 by aazdoev           #+#    #+#             */
+/*   Updated: 2021/11/18 18:13:36 by aazdoev          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <stdio.h>
 
-void	print(char c)
+int	ft_str_is_uppercase(char *str)
 {
-	write(1, &c, 1);
-}
+	int	i;
 
-
-int main(int argc, char **argv)
-{
-	int i;
-	int j;
-
-	i = 0;
-	while (argv[++i])
+	if (!str[0])
+		return (1);
+	else
 	{
-		j = 0;
-		while (argv[i][j])
-			print(argv[i][j++]);
-		print('\n');
+		i = 0;
+		while (str[i])
+		{
+			if (str[i] < 65 || str[i] > 90)
+				return (0);
+			i++;
+		}
 	}
+	return (1);
 }

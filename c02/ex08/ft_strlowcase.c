@@ -1,34 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_params.c                                  :+:      :+:    :+:   */
+/*   ft_strlowcase.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aazdoev <aazdoev@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aazdoev <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/18 11:40:52 by aazdoev           #+#    #+#             */
-/*   Updated: 2021/11/18 11:41:33 by aazdoev          ###   ########.fr       */
+/*   Created: 2021/11/16 11:38:28 by aazdoev           #+#    #+#             */
+/*   Updated: 2021/11/18 18:15:23 by aazdoev          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <stdio.h>
 
-void	print(char c)
+char	*ft_strlowcase(char *str)
 {
-	write(1, &c, 1);
-}
-
-
-int main(int argc, char **argv)
-{
-	int i;
-	int j;
+	int	i;
 
 	i = 0;
-	while (argv[++i])
+	while (str[i])
 	{
-		j = 0;
-		while (argv[i][j])
-			print(argv[i][j++]);
-		print('\n');
+		if (str[i] >= 65 && str[i] <= 90)
+			str[i] += 32;
+		i++;
 	}
+	return (str);
 }

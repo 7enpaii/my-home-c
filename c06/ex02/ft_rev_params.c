@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_rev_params.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aazdoev <aazdoev@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/18 11:40:38 by aazdoev           #+#    #+#             */
+/*   Updated: 2021/11/18 11:40:41 by aazdoev          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <unistd.h>
 
 void	print(char c)
@@ -9,13 +21,12 @@ void	print(char c)
 int main(int argc, char **argv)
 {
 	int i;
-	int j;
 	
-	while (argv[--argc] != 0)
+	while (--argc != 0)
 	{
-		j = 0;
-		while(argv[argc][j])
-			print(argv[argc][j++]);
+		i = 0;
+		while (argv[argc][i])
+			print(argv[argc][i++]);
 		print('\n');
 	}
 }

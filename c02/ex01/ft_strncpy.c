@@ -1,34 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_params.c                                  :+:      :+:    :+:   */
+/*   ft_strncpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aazdoev <aazdoev@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/18 11:40:52 by aazdoev           #+#    #+#             */
-/*   Updated: 2021/11/18 11:41:33 by aazdoev          ###   ########.fr       */
+/*   Created: 2021/11/14 15:03:39 by aazdoev           #+#    #+#             */
+/*   Updated: 2021/11/16 11:30:36 by aazdoev          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-void	print(char c)
+char	*ft_strncpy(char *dest, char *src, unsigned int n)
 {
-	write(1, &c, 1);
-}
+	unsigned int	i;
 
-
-int main(int argc, char **argv)
-{
-	int i;
-	int j;
-
-	i = 0;
-	while (argv[++i])
-	{
-		j = 0;
-		while (argv[i][j])
-			print(argv[i][j++]);
-		print('\n');
-	}
+	i = -1;
+	while (++ i < n)
+		dest[i] = src[i];
+	dest[i] = '\0';
+	return (dest);
 }

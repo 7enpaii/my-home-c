@@ -1,61 +1,65 @@
-#include <unistd.h>
-#include <stdio.h>
-#include <stdlib.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aazdoev <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/17 13:54:21 by aazdoev           #+#    #+#             */
+/*   Updated: 2021/11/17 15:43:52 by aazdoev          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-// ----+-+123hel65
-// >> -123
-
-char	get_first_digits(char *str);
-
-int str_len(char *str);
-
-char	compare_symbols(char *str)
+void	compare_symbols(char *str, char *sym)
 {
-	char sym;
+	if (*sym == '-' && *str == '-')
+		*sym = '+';
+	else if ((*sym == '+' && *str == '-') || (*sym == '-' && *str == '+'))
+		*sym = '-';
+	else
+		*sym = *str;
+}
 
+void	check_conditions(char *str, char *sym, int *num)
+{
 	while (*str)
-	{
-		if (sym == '-' && *str == '-')
-			sym = '+';
-		else if ((sym == '+' && *str == '-') || (sym == '-' && *str == '+'))
-			sym = '-';
-		else
-			sym = *str;
+	{	
+		if (*str == '-' || *str == '+')
+		{
+			if (*(str + 1) == '+' || *(str + 1) == '-')
+				compare_symbols(&*str, &*sym);
+			else if (*(str + 1) < '0' || *(str + 1) > '9')
+				break ;
+			else
+				compare_symbols(&*str, &*sym);
+		}
+		else if (*str >= '0' || *str <= '9')
+		{
+			*num = (*num * 10) + 10 - (58 - (int)*str);
+			if (*(str + 1) < '0' || *(str + 1) > '9')
+				break ;
+		}
 		str++;
 	}
-	return (sym);
 }
 
-
-
-long int	convert_char_to_digit(char *str_numbers)
+int	ft_atoi(char *str)
 {
-	long int result;
+	char	sym;
+	int		num;
 
-	result = 0;
-	while (*str_numbers)
+	num = 0;
+	while (*str > 0 && *str < '!')
 	{
-		result = (result * 10) + 10 - (58 - (int)*str_numbers);
-		str_numbers++;
+		str++;
+		if (*str == '-' && *str == '+')
+			break ;
+		else if (*str >= '0' && *str <= '9')
+			break ;
 	}
-	return result;
-}
-
-
-int	ft_atoi(char *str);
-
-
-
-
-
-int main(void)
-{
-
-	char	str[] = "23";
-	//printf("%d", convert_char_to_digit(str));
-
-	char	str2[] = "--";
-	printf("%c", compare_symbols(str2));
-	//int n = atoi(str) + 5;
-	//printf("%d", n);
+	if (*str == '-' || *str == '+' || (*str >= '0' && *str <= '9'))
+		check_conditions(&*str, &sym, &num);
+	if (sym == '-')
+		return (-num);
+	return (num);
 }

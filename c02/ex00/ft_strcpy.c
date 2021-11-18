@@ -1,34 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_params.c                                  :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aazdoev <aazdoev@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/18 11:40:52 by aazdoev           #+#    #+#             */
-/*   Updated: 2021/11/18 11:41:33 by aazdoev          ###   ########.fr       */
+/*   Created: 2021/11/13 18:16:53 by aazdoev           #+#    #+#             */
+/*   Updated: 2021/11/16 11:30:05 by aazdoev          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-void	print(char c)
+void	ft_strcpy(char *dest, char *src)
 {
-	write(1, &c, 1);
-}
-
-
-int main(int argc, char **argv)
-{
-	int i;
-	int j;
+	int	i;
 
 	i = 0;
-	while (argv[++i])
+	while (src[i])
 	{
-		j = 0;
-		while (argv[i][j])
-			print(argv[i][j++]);
-		print('\n');
+		dest[i] = src[i];
+		i++;
 	}
+	dest[i] = src[i];
 }

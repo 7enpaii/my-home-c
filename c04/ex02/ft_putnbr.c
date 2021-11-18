@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_params.c                                  :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aazdoev <aazdoev@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aazdoev <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/18 11:40:52 by aazdoev           #+#    #+#             */
-/*   Updated: 2021/11/18 11:41:33 by aazdoev          ###   ########.fr       */
+/*   Created: 2021/11/16 18:18:50 by aazdoev           #+#    #+#             */
+/*   Updated: 2021/11/17 15:27:32 by aazdoev          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,17 @@ void	print(char c)
 	write(1, &c, 1);
 }
 
-
-int main(int argc, char **argv)
+void	ft_putnbr(int nb)
 {
-	int i;
-	int j;
+	long int	n;
 
-	i = 0;
-	while (argv[++i])
+	n = nb;
+	if (n < 0)
 	{
-		j = 0;
-		while (argv[i][j])
-			print(argv[i][j++]);
-		print('\n');
+		print('-');
+		n = -n;
 	}
+	if (n > 9)
+		ft_putnbr(n / 10);
+	print((n % 10) + '0');
 }

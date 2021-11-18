@@ -1,34 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_params.c                                  :+:      :+:    :+:   */
+/*   ft_str_is_numeric.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aazdoev <aazdoev@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aazdoev <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/18 11:40:52 by aazdoev           #+#    #+#             */
-/*   Updated: 2021/11/18 11:41:33 by aazdoev          ###   ########.fr       */
+/*   Created: 2021/11/16 11:33:06 by aazdoev           #+#    #+#             */
+/*   Updated: 2021/11/16 11:34:06 by aazdoev          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <stdio.h>
 
-void	print(char c)
+int	ft_str_is_numeric(char *str)
 {
-	write(1, &c, 1);
-}
+	int	i;
 
-
-int main(int argc, char **argv)
-{
-	int i;
-	int j;
-
-	i = 0;
-	while (argv[++i])
+	if (!str[0])
 	{
-		j = 0;
-		while (argv[i][j])
-			print(argv[i][j++]);
-		print('\n');
+		return (1);
 	}
+	else
+	{
+		i = 0;
+		while (str[i])
+		{
+			if (str[i] < 48 || str[i] > 57)
+				return (0);
+			i++;
+		}
+	}
+	return (1);
 }

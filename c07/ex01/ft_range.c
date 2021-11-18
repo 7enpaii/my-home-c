@@ -1,34 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_params.c                                  :+:      :+:    :+:   */
+/*   ft_range.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aazdoev <aazdoev@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/18 11:40:52 by aazdoev           #+#    #+#             */
-/*   Updated: 2021/11/18 11:41:33 by aazdoev          ###   ########.fr       */
+/*   Created: 2021/11/18 15:43:27 by aazdoev           #+#    #+#             */
+/*   Updated: 2021/11/18 16:45:31 by aazdoev          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <stdlib.h>
 
-void	print(char c)
+int	*ft_range(int min, int max)
 {
-	write(1, &c, 1);
-}
+	int	i;
+	int	*digit_tab;
 
-
-int main(int argc, char **argv)
-{
-	int i;
-	int j;
-
+	if (min >= max)
+		return (NULL);
+	digit_tab = malloc(sizeof(*digit_tab) * max - 1);
 	i = 0;
-	while (argv[++i])
-	{
-		j = 0;
-		while (argv[i][j])
-			print(argv[i][j++]);
-		print('\n');
-	}
+	while (min < max)
+		digit_tab[i++] = min++;
+	free(digit_tab);
+	return (digit_tab);
 }
