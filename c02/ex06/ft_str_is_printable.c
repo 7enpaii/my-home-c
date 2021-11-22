@@ -14,20 +14,11 @@
 
 int	ft_str_is_printable(char *str)
 {
-	int	i;
-
-	if (str[0] == 0)
+	while (*str)
 	{
-		return (1);
+		if (*str < ' ' || *str == 127)
+			return (0);
+		str++;
 	}
-	else
-	{
-		i = 0;
-		while (str[i])
-		{
-			if (str[i] > 32 && str[i] < 127)
-				return (1);
-			i++;
-		}
-	}
+	return (1);
 }
