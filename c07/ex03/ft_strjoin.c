@@ -15,7 +15,6 @@ char *ft_strjoin(int size, char **strs, char *sep)
 	{
 		while (**strs)
 		{
-			//*str = **strs++;
 			printf("%c", **strs);
 		}
 		strs++;

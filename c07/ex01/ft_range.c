@@ -14,16 +14,17 @@
 
 int	*ft_range(int min, int max)
 {
-	int	i;
-	int	*digit_tab;
+	int *range;
+	int i;
 
 	if (min >= max)
 		return (NULL);
-	digit_tab = malloc(sizeof(*digit_tab) * (max - min));
-	if (!digit_tab)
+	max -= min;
+	range = malloc(max * sizeof(int));
+	if (!range)
 		return (NULL);
-	i = 0;
-	while (min < max)
-		digit_tab[i++] = min++;
-	return (digit_tab);
+	i = -1;
+	while (++i < max)
+		range[i] = min + i;
+	return (t);
 }
