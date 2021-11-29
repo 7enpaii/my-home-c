@@ -44,7 +44,7 @@ char    *ssplit(char *str, char *sep)
         if (sep_checked_len == sep_len)
         {
             end = k - sep_len;
-            while (start <= end)
+            while (start < end)
             {
                 print(str[start++]);
             }
@@ -58,7 +58,7 @@ char    *ssplit(char *str, char *sep)
 
 int main(void)
 {
-    char *str = "This make me marode";
-    char *sep = " ma";
+    char *str = "i, make, this, choose";
+    char *sep = ", ";
     char *words = ssplit(str, sep);
 }
